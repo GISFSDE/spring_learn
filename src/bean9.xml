@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <!--+++++++++++++++++++自动装配 autowire="byName/byType"+++++++++++++++++++++++-->
+
+    <!--实现自动装配 bean标签属性autowire，配置自动装配 autowire属性常用两个值： byName根据属性名称注入 ，注入值bean的id值和类属性名称一样，如下dept1不会注入。 byType根据属性类型注入 -->
+    <bean id="emp" class="com.lxl.spring5.autowire.Emp" autowire="byName">
+<!--    Could not autowire. There is more than one bean of 'Dept' type. Beans: dept,dept1. Properties: 'dept'-->
+<!--    <bean id="emp" class="com.lxl.spring5.autowire.Emp" autowire="byType">-->
+<!--        原始模式-->
+<!--        <property name="dept" ref="dept"></property>-->
+    </bean>
+
+    <!--后置处理器 ,在此配置文件中的所有bean添加后置处理器-->
+    <bean id="dept" class="com.lxl.spring5.autowire.Dept"></bean>
+    <bean id="dept1" class="com.lxl.spring5.autowire.Dept"></bean>
+</beans>
